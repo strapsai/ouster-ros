@@ -2,9 +2,9 @@
 # please migrate to the parameters format as specified in driver_params.yaml
 ouster_driver:
   ros__parameters:
-    lidar_ip: 169.254.200.2
-    computer_ip: 169.254.219.146
-    lidar_mode: "1024x10"
+    lidar_ip: 10.3.1.18
+    computer_ip: 10.3.1.14
+    lidar_mode: "512x10"
     imu_port: 7503
     lidar_port: 7502
     sensor_frame: laser_sensor_frame
@@ -27,7 +27,7 @@ ouster_driver:
     # (See this project's README and/or the Ouster Software Guide for more
     # information).
     #
-    timestamp_mode: TIME_FROM_INTERNAL_OSC
+    timestamp_mode: TIME_FROM_ROS_RECEPTION
 
     # Mask-like-string used to define the data processors that should be
     # activated upon startup of the driver. This will determine the topics
@@ -51,4 +51,4 @@ ouster_driver:
     # IMG|PCL|IMU|SCAN
     # PCL
     #
-    proc_mask: IMG|PCL|IMU|SCAN
+    proc_mask: PCL|IMU

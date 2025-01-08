@@ -2,10 +2,10 @@ ouster/os_driver:
   ros__parameters:
     # sensor_hostname[required]: hostname or IP address of the sensor (IP4 or
     # IP6).
-    sensor_hostname: ''
+    sensor_hostname: '10.3.1.18'
     # udp_dest[optional]: hostname or multicast group IP where the sensor will
     # send UDP data packets.
-    udp_dest: ''
+    udp_dest: '10.3.1.14'
     # mtp_dest[optional]: hostname IP address for receiving data packets via
     # multicast, by default it is INADDR_ANY, so packets will be received on
     # first available network interface.
@@ -16,7 +16,7 @@ ouster/os_driver:
     # lidar_mode[optional]: resolution and rate; possible values: { 512x10,
     # 512x20, 1024x10, 1024x20, 2048x10, 4096x5 }. Leave empty to remain on
     # current the lidar mode.
-    lidar_mode: ''
+    lidar_mode: '1024x10'
     # timestamp_mode[optional]: method used to timestamp measurements; possible
     # values:
     # - TIME_FROM_INTERNAL_OSC
@@ -25,7 +25,7 @@ ouster/os_driver:
     # - TIME_FROM_ROS_TIME: This option uses the time of reception of first
     #                       packet of a LidarScan as the timestamp of the IMU,
     #                       PointCloud2 and LaserScan messages.
-    timestamp_mode: ''
+    timestamp_mode: 'TIME_FROM_ROS_TIME'
     # ptp_utc_tai_offset[optional]: UTC/TAI offset in seconds to apply when
     # TIME_FROM_PTP_1588 timestamp mode is used.
     ptp_utc_tai_offset: -37.0
@@ -59,11 +59,11 @@ ouster/os_driver:
     point_cloud_frame: os_lidar 
     # proc_mask[optional]: use any combination of the 4 flags IMG, PCL, IMU and
     # SCAN to enable or disable their respective messages.
-    proc_mask: IMG|PCL|IMU|SCAN
+    proc_mask: PCL|IMU
     # scan_ring[optional]: use this parameter in conjunction with the SCAN flag
     # to select which beam of the LidarScan to use when producing the LaserScan
     # message. Choose a value the range [0, sensor_beams_count).
-    scan_ring: 0
+    scan_ring: 64
     # use_system_default_qos[optional]: if false, data are published with sensor
     # data QoS. This is preferrable for production but default QoS is needed for
     # rosbag. See: https://github.com/ros2/rosbag2/issues/125
@@ -86,4 +86,4 @@ ouster/os_driver:
     # - ouster_ros/os_point.h
     # - ouster_ros/sensor_point_types.h
     # - ouster_ros/common_point_types.h.
-    point_type: original
+    point_type: xyzir
